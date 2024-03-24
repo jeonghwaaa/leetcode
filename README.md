@@ -1,1 +1,1 @@
-![image](https://github.com/jeonghwaaa/leetcode/assets/164745231/5022141e-3a05-4c1c-adde-564ea7f532dc)
+![image](https://github.com/jeonghwaaa/leetcode/assets/164745231/da4675a4-42af-456e-92e4-27a9832836ef)
