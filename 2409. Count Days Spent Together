@@ -1,0 +1,13 @@
+class Solution:
+    def countDaysTogether(self, arriveAlice: str, leaveAlice: str, arriveBob: str, leaveBob: str) -> int:
+
+        A = set(range(self.convert(arriveAlice), self.convert(leaveAlice)+1))
+        B = set(range(self.convert(arriveBob), self.convert(leaveBob)+1))
+
+        return len( A.intersection(B) )
+
+    def convert(self, date: str) -> int:
+        num_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        month = int(date[:2])
+        return int(date[-2:]) + sum(num_days[:month-1])
+        
