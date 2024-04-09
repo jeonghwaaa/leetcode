@@ -1,0 +1,5 @@
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        numint1 = int(num1)
+        numint2 = int(num2)
+        return str(numint1 + numint2)
