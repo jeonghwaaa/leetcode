@@ -1,0 +1,8 @@
+class Solution:
+    def buddyStrings(self, s: str, goal: str) -> bool:
+        val = s[::-1]
+
+        if val == goal :
+            return True
+        else :
+            return False
