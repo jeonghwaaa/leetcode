@@ -1,0 +1,15 @@
+class Solution:
+    def sumOfLeftLeaves(self, root: TreeNode) -> int:
+        def isLeaf(node):
+            return node and not node.left and not node.right
+        
+        def dfs(node):
+            if not node:
+                return 0
+            left_sum = dfs(node.left)
+            right_sum = dfs(node.right)
+            if isLeaf(node.left):
+                left_sum += node.left.val
+            return left_sum + right_sum
+        
+        return dfs(root)
