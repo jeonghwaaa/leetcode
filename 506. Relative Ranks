@@ -1,0 +1,14 @@
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_score = sorted(score, reverse=True)
+        rank_map = {score: str(idx + 1) for idx, score in enumerate(sorted_score)}
+        
+        for i in range(min(3, len(sorted_score))):
+            if i == 0:
+                rank_map[sorted_score[i]] = "Gold Medal"
+            elif i == 1:
+                rank_map[sorted_score[i]] = "Silver Medal"
+            elif i == 2:
+                rank_map[sorted_score[i]] = "Bronze Medal"
+        
+        return [rank_map[s] for s in score]
