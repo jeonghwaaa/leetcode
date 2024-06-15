@@ -1,0 +1,21 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        
+        stack = []
+        # 괄호 짝을 맞추기 위한 사전
+        mapping = {')': '(', '}': '{', ']': '['}
+        
+        for char in s:
+            if char in mapping:
+                # 스택에서 top 요소를 꺼내고, 스택이 비어있으면 #로 초기화
+                top_element = stack.pop() if stack else '#'
+                
+                # 현재 괄호와 스택의 top 요소가 매칭되지 않으면 False 반환
+                if mapping[char] != top_element:
+                    return False
+            else:
+                # 여는 괄호는 스택에 추가
+                stack.append(char)
+        
+        # 스택이 비어 있으면 True, 아니면 False 반환
+        return not stack
