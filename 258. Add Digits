@@ -1,0 +1,10 @@
+class Solution:
+    def addDigits(self, num: int) -> int:
+        # 반복적으로 각 자리 숫자의 합을 구하는 과정
+        while num >= 10:  # 결과가 한 자리 숫자가 될 때까지 반복
+            sum_digits = 0
+            while num > 0:
+                sum_digits += num % 10  # 마지막 자리 숫자를 더함
+                num //= 10  # 마지막 자리 숫자를 제거
+            num = sum_digits  # 각 자리 숫자의 합을 num에 저장하여 반복
+        return num  # 한 자리 숫자가 되면 반환
