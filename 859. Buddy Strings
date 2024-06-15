@@ -1,8 +1,22 @@
 class Solution:
     def buddyStrings(self, s: str, goal: str) -> bool:
-        val = s[::-1]
-
-        if val == goal :
-            return True
-        else :
+        if len(s) != len(goal):
             return False
+        
+        if s == goal:
+            seen = set()
+            for char in s:
+                if char in seen:
+                    return True
+                seen.add(char)
+            return False
+        
+        pairs = []
+        for a, b in zip(s, goal):
+            if a != b:
+                pairs.append((a, b))
+        
+        if len(pairs) != 2:
+            return False
+        
+        return pairs[0] == pairs[1][::-1]
