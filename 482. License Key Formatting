@@ -1,0 +1,13 @@
+class Solution:
+    def licenseKeyFormatting(self, s: str, k: int) -> str:
+        s = s.replace('-', '').upper()
+        size = len(s)
+        first_group_size = size % k
+        
+        result = s[:first_group_size]
+        for i in range(first_group_size, size, k):
+            if result:
+                result += '-'
+            result += s[i:i+k]
+        
+        return result
