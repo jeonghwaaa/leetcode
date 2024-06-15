@@ -1,0 +1,16 @@
+def isBadVersion(version: int) -> bool:
+    # 이 부분은 주어진 문제에서 제공되는 것으로 간주하고, 예시로 잘못된 버전을 정의합니다.
+    # 실제 문제에서는 이 부분을 사용자가 구현하지 않습니다.
+    bad_version = 4
+    return version >= bad_version
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        left, right = 1, n
+        while left < right:
+            mid = left + (right - left) // 2
+            if isBadVersion(mid):
+                right = mid  # mid가 잘못된 버전이면, 오른쪽 구간을 줄입니다.
+            else:
+                left = mid + 1  # mid가 올바른 버전이면, 왼쪽 구간을 줄입니다.
+        return left  # left와 right가 만나는 지점이 첫 번째 잘못된 버전입니다.
