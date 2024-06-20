@@ -1,0 +1,31 @@
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def findSecondMinimumValue(self, root: TreeNode) -> int:
+        # Initialize a set to keep track of unique values
+        unique_values = set()
+        
+        # Helper function to perform DFS and collect unique values
+        def dfs(node):
+            if node:
+                unique_values.add(node.val)
+                dfs(node.left)
+                dfs(node.right)
+        
+        # Perform DFS starting from the root
+        dfs(root)
+        
+        # If there are fewer than 2 unique values, return -1
+        if len(unique_values) < 2:
+            return -1
+        
+        # Remove the minimum value (root value)
+        unique_values.remove(min(unique_values))
+        
+        # The next minimum value is the second smallest value
+        return min(unique_values)
