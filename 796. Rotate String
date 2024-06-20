@@ -1,0 +1,7 @@
+class Solution:
+    def rotateString(self, s: str, goal: str) -> bool:
+        # 두 문자열의 길이가 다르면 회전된 버전이 될 수 없음
+        if len(s) != len(goal):
+            return False
+        # s를 두 번 반복한 문자열 안에 goal이 있는지 확인
+        return goal in (s + s)
