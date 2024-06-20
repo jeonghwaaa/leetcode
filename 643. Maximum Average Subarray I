@@ -1,0 +1,14 @@
+class Solution:
+    def findMaxAverage(self, nums, k):
+        # 첫 k개의 요소의 합을 구합니다.
+        current_sum = sum(nums[:k])
+        max_sum = current_sum
+
+        # 슬라이딩 윈도우를 사용하여 최대 평균을 찾습니다.
+        for i in range(k, len(nums)):
+            current_sum = current_sum - nums[i - k] + nums[i]
+            if current_sum > max_sum:
+                max_sum = current_sum
+
+        # 최대 합을 k로 나누어 최대 평균을 반환합니다.
+        return max_sum / k
