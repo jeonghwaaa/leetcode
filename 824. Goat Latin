@@ -1,0 +1,14 @@
+class Solution:
+    def toGoatLatin(self, sentence: str) -> str:
+        def transform(word, index):
+            vowels = "aeiouAEIOU"
+            if word[0] in vowels:
+                new_word = word + "ma"
+            else:
+                new_word = word[1:] + word[0] + "ma"
+            new_word += "a" * (index + 1)
+            return new_word
+        
+        words = sentence.split()
+        goat_latin_words = [transform(word, i) for i, word in enumerate(words)]
+        return " ".join(goat_latin_words)
