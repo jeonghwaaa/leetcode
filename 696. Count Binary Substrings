@@ -1,0 +1,20 @@
+class Solution:
+    def countBinarySubstrings(self, s: str) -> int:
+        groups = []
+        count = 1
+        
+        # 그룹의 크기를 세기
+        for i in range(1, len(s)):
+            if s[i] != s[i - 1]:
+                groups.append(count)
+                count = 1
+            else:
+                count += 1
+        groups.append(count)
+        
+        # 인접한 그룹 간의 최소 크기를 결과에 더하기
+        result = 0
+        for i in range(1, len(groups)):
+            result += min(groups[i], groups[i - 1])
+        
+        return result
